@@ -102,6 +102,19 @@ router.post(
       console.error(err.message);
       res.status(500).send('Server Error');
     }
+
+    // Check url is http:// or https:// fix if other one
+
+    const checkUrl = (url) => {
+      if (!/^(f|ht)tps?:\/\//i.test(url)) {
+        url = 'https://' + url;
+      }
+
+      /*if (!/^(f|ht)tps?:\/\//i.test(url)) {
+        url = 'https://' + url;
+      }*/
+      return url;
+    };
   }
 );
 //  @route POST api/profile
